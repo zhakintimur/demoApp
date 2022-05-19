@@ -1,7 +1,6 @@
 package com.example.demoapp.service;
 
 import com.example.demoapp.dao.AccountDao;
-import com.example.demoapp.dao.AccountDaoImpl;
 import com.example.demoapp.entity.Account;
 
 import java.math.BigDecimal;
@@ -9,8 +8,8 @@ import java.math.BigDecimal;
 public class AccountServiceImpl implements AccountService {
     private final AccountDao accountDao;
 
-    public AccountServiceImpl() {
-        this.accountDao = new AccountDaoImpl();
+    public AccountServiceImpl(AccountDao accountDao) {
+        this.accountDao = accountDao;
     }
 
     @Override

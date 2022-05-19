@@ -1,12 +1,14 @@
 package com.example.demoapp;
 
-import com.example.demoapp.entity.Account;
+import com.example.demoapp.service.AccountService;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class DemoAppApplication {
 
     public static void main(String[] args) {
-        Account account = null;
-        System.out.println(account);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/context.xml");
+        AccountService accountService = context.getBean(AccountService.class);
+
     }
 
 }
