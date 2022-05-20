@@ -10,9 +10,9 @@ public class Account {
     private BigDecimal balance;
     //private String ownerName;
 
-    public Account() {
-        id = AccountIdSequence.next();
-        balance = BigDecimal.ZERO;
+    public Account(Long id, BigDecimal balance) {
+        this.id = id;
+        this.balance = balance;
     }
 
     public Long getId() {

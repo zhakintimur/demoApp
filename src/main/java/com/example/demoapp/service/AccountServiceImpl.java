@@ -2,13 +2,17 @@ package com.example.demoapp.service;
 
 import com.example.demoapp.dao.AccountDao;
 import com.example.demoapp.entity.Account;
+import com.example.demoapp.util.AccountIdSequence;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+@Service
 public class AccountServiceImpl implements AccountService {
     private final AccountDao accountDao;
 
-    public AccountServiceImpl(AccountDao accountDao) {
+    public AccountServiceImpl(@Qualifier("inMemoryAccountDao") AccountDao accountDao) {
         this.accountDao = accountDao;
     }
 
@@ -19,7 +23,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void newAccount() {
-        accountDao.create(new Account());
+        accountDao.create(new Account(AccountIdSequence.next(), BigDecimal.ZERO));
     }
 
     @Override
